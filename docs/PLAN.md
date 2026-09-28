@@ -28,7 +28,6 @@ What we know about the child and the setup:
 - **Share the app with his speech therapist.** Show them the app, align the vocabulary, and ask which phase they consider he is working on.
 
 Working name: **"Mes Pictos"** (placeholder). The app is for family use only, so the name is free (see [§8](#8-licensing-privacy-and-safety)).
-for why the store name should not contain "PECS".
 
 ---
 
