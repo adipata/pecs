@@ -2,9 +2,32 @@
 
 > Status: **draft / proposal**. Nothing is built yet. This document covers what
 > the app should do, why (grounded in PECS), how to build it, and in what order.
-> The open questions at the end need an answer before development starts.
+> The answers to the open questions are recorded in [§0](#0-context-and-decisions).
 
-Working name: **"Mes Pictos"** (placeholder). See [§8](#8-licensing-privacy-and-safety)
+---
+
+## 0. Context and decisions
+
+What we know about the child and the setup:
+
+| Question | Answer | Consequence for the plan |
+|---|---|---|
+| PECS level | Not formally assessed, but very early. He has a paper binder and uses a couple of object pictograms, not yet reliably. He likes using the tablet. | Design for **Phases I–III first**: few, large cards, photos of *his* things, instant speech. The sentence strip moves later (step 4) and stays off by default. |
+| Speech therapist's pictograms | Some objects and toys, plus "non" and "j'ai besoin d'aide". | The starter content is those exact items. Take **photos of his real binder cards** so the app looks like what he already knows. |
+| Distribution | Family only. | No App Store work: no Kids-category rules, no store listing. The name can contain "PECS". The ARASAAC non-commercial licence is fine. Install through Xcode or TestFlight. |
+| Device | iPad 7th generation, iPadOS 18.7. A newer iPad is possible. | **Minimum target iOS 18** works on his current iPad, so no new device is needed. Features that depend on newer hardware, such as photo background removal, must be optional. |
+| Development | A Mac with Xcode is available. | Start step 1 directly. |
+
+**Design rules that follow from his level**
+
+- **Default layout: 1 to 4 large cards per page.** More cards can be added as he learns to tell them apart. Hidden cards stay in the page, ready to be shown again.
+- **Speak on every tap, immediately.** The sound is the reward for using the card. No strip, no "read" button, no confirmation.
+- **Photos before drawings.** Use photos of his favourite items (*renforçateurs*) and photos of his current binder cards.
+- **"Non" and "Aide"** are available from the start in the permanent bar, because his therapist already uses them. The other critical cards (Pause, Oui, Attends, Fini) are added only when the therapist starts them.
+- **The paper binder stays the main tool** while he learns the exchange (Phases I–II need a partner). The app mirrors the binder. Printing cards (step 3) keeps the two identical.
+- **Share the app with his speech therapist.** Show them the app, align the vocabulary, and ask which phase they consider he is working on.
+
+Working name: **"Mes Pictos"** (placeholder). The app is for family use only, so the name is free (see [§8](#8-licensing-privacy-and-safety)).
 for why the store name should not contain "PECS".
 
 ---
@@ -252,7 +275,7 @@ on first launch:
 | Concern | Choice | Why |
 |---|---|---|
 | Language / UI | **Swift 6, SwiftUI** | One code base for iPad and iPhone, with native drag and drop and accessibility. |
-| Minimum OS | **iOS / iPadOS 18** (check on your son's iPad) | Needed for SwiftData improvements, Vision subject lifting, and Personal Voice. |
+| Minimum OS | **iOS / iPadOS 18** (his iPad 7th gen runs 18.7) | Needed for SwiftData improvements, Vision subject lifting, and Personal Voice. |
 | Persistence | **SwiftData** | Simple, works with SwiftUI, and can sync through CloudKit. |
 | Sync | SwiftData + **CloudKit private database** | No server of our own, and data stays in the family's iCloud. |
 | Speech | AVFoundation (`AVSpeechSynthesizer`, `AVAudioPlayer`, `AVAudioRecorder`) | Built into iOS. |
@@ -412,12 +435,12 @@ Sizes are rough (S is a few days, M 1–2 weeks, L 2–4 weeks of evening or wee
 
 | Step | Content | Size |
 |---|---|---|
-| **0. Preparation** | Answer the open questions (§11). Get an Apple Developer account. Create the Xcode project, GitHub Actions CI, and README. Sketch the pages on paper and test the vocabulary with printed cards. Try PECS IV+, LetMeTalk, and CBoard for inspiration. | S |
-| **1. MVP "tableau parlant"** | Models (§7.3). Child mode grid with tabs and French TTS. Parent mode with lock. Page CRUD and grid size. Pictogram editor with photo library, camera, crop, label, and spoken text. Move within and between pages (drag and menu). Hide and show. Basic settings (voice, rate, label style). | L |
-| **2. Symbol library** | ARASAAC search and download, with attribution and credits. Bundled starter pack with critical cards and starters. Permanent bar. Photo background removal. | M |
-| **3. Sharing and backup** | `.pictos` export and import (pictogram, pages, full backup) through AirDrop, Files, and Mail. Print cards to PDF. iCloud sync between iPhone and iPad. Automatic local backups. | M |
-| **4. Sentence strip** | Strip, starters, reading with sequential highlight, reorder and clear. Phase presets. Attribute pages. Fitzgerald colour coding. | M |
-| **5. Extras** | Voice recordings. Folder pictograms. Communication log with CSV export. Visual schedule and D'abord/Ensuite. Timer for Attends. OBF import/export. Several profiles. Personal Voice. | L |
+| **0. Preparation** | Get an Apple Developer account (99 €/year), which avoids re-installing every 7 days. Create the Xcode project, GitHub Actions CI, and README. Photograph his current binder cards and 5–10 favourite items. Ask his speech therapist which cards to start with. | S |
+| **1. MVP "tableau parlant"** | Models (§7.3). Child mode with **1–4 large cards per page** and instant French speech on tap. Permanent bar with **Non** and **Aide**. Parent mode with lock. Page CRUD and grid size. Pictogram editor with photo library, camera, crop, label, and spoken text. Move within and between pages (drag and menu). Hide and show. Basic settings (voice, rate, label style). Recorded voice per pictogram, moved up from step 5 because a parent's voice often works better at this level. | L |
+| **2. Symbol library** | ARASAAC search and download, with attribution and credits. Bundled starter pack (objects, toys, critical cards). Photo background removal, only if his iPad supports it. | M |
+| **3. Sharing and backup** | Print cards to PDF, so the paper binder matches the app. `.pictos` export and import (pictogram, pages, full backup) through AirDrop, Files, and Mail. Automatic local backups. iCloud sync with a parent iPhone, if wanted. | M |
+| **4. Sentence strip** | Only when he picks the right card reliably from several (end of Phase III). Strip, "Je veux" starter, reading with sequential highlight, reorder and clear. Phase presets. Attribute pages. Fitzgerald colour coding. | M |
+| **5. Extras** | Folder pictograms. Communication log with CSV export. Visual schedule and D'abord/Ensuite. Timer for Attends. OBF import/export. Several profiles. Personal Voice. | L |
 
 Each step ends with a TestFlight build that you test with your son. If possible, also get feedback
 from his orthophoniste or PECS consultant.
@@ -447,14 +470,13 @@ from his orthophoniste or PECS consultant.
 
 ---
 
-## 11. Open questions (please answer before step 1)
+## 11. Open questions
 
-1. **Current PECS level.** Which phase is your son working on, and does he already use a physical *classeur PECS*? This decides whether the sentence strip is needed early.
-2. **Professionals.** Is an orthophoniste or PECS-trained consultant involved? Which symbols do they use (ARASAAC, PCS, photos)? The app should match what he already knows.
-3. **Distribution.** Is this only for your family (TestFlight or direct install), or should it go on the App Store for free? This affects naming, the ARASAAC licence, and the Kids-category work.
-4. **Devices.** Which iPad model and iOS version does he use? Will you edit from your own iPhone (which needs iCloud sync early), or only on the iPad?
-5. **Development setup.** Do you have a Mac with Xcode? Which Swift and SwiftUI experience level should the code target?
-6. **Voice.** A synthetic French voice, your own recorded voice, or both?
+Questions 1–5 are answered in [§0](#0-context-and-decisions). Still open:
+
+1. **Voice.** A synthetic French voice, your own recorded voice, or both? The plan supports both from step 1.
+2. **Editing device.** Will you edit only on his iPad, or also from your iPhone? If also from the iPhone, iCloud sync moves earlier.
+3. **PECS phase.** Ask his speech therapist which phase they are working on, and adjust the default layout (§0) to match.
 
 ---
 
