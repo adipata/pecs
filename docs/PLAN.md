@@ -17,6 +17,9 @@ What we know about the child and the setup:
 | Distribution | Family only. | No App Store work: no Kids-category rules, no store listing. The name can contain "PECS". The ARASAAC non-commercial licence is fine. Install through Xcode or TestFlight. |
 | Device | iPad 7th generation, iPadOS 18.7. A newer iPad is possible. | **Minimum target iOS 18** works on his current iPad, so no new device is needed. Features that depend on newer hardware, such as photo background removal, must be optional. |
 | Development | A Mac with Xcode is available. | Start step 1 directly. |
+| Voice | Both: the iPad's French voice and parent recordings. | Recording a voice is part of the pictogram editor in step 1. A card with a recording plays it; otherwise the iPad's voice reads it. |
+| Editing | From the parent's iPhone as well as on the iPad. | **iCloud sync moves into step 1.** The data model is CloudKit-compatible from the start (§7.3). |
+| "Show" gesture | When he picks a card, it should move to the centre of the screen so he can show the tablet to an adult, as he would hand over a paper card. | New **"show mode"** (*mode montrer*), see §3.1. It keeps the PECS exchange with a partner, which a plain speech button would skip. |
 
 **Design rules that follow from his level**
 
@@ -106,6 +109,19 @@ Transitions and **visual schedules** (*emploi du temps visuel*) are also part of
 - Tap a pictogram to highlight it, give haptic feedback, and speak it in French.
 - Nothing in this mode can be edited, deleted, or moved.
 
+**Show mode (*mode montrer*)**, what happens when the child taps a card:
+1. The card lifts, grows, and moves to the **centre of the screen** with a soft spring animation (about 0.4 s). The rest of the page dims and blurs.
+2. The card is spoken (recording or iPad voice) while it moves. A light haptic tap confirms the choice.
+3. The enlarged card **stays on screen** so he can turn the iPad and **show it to an adult**, the digital version of handing over a paper card.
+4. The adult closes it. The card flies back to its place on the page.
+   - Tapping the enlarged card speaks it again.
+   - Closing options (setting): tap outside the card, a swipe down, or **adult-only** (a two-finger tap or a long press), so the child cannot close it by accident before showing it.
+   - Optional automatic close after N seconds (off by default).
+- The animation is calm: no sparkles or sounds beyond the speech. A setting chooses between a small "celebration" (a gentle bounce and glow) or none. With iOS **Reduce Motion** on, the card fades in at the centre instead of flying.
+- The same presentation is used later for the sentence strip: the whole sentence moves to the centre to be shown.
+- Show mode can be turned off per profile, in which case a tap only speaks and highlights the card.
+- Implementation: a full-screen overlay using `matchedGeometryEffect` from the grid cell to the centre, a `.spring` animation, and `UIImpactFeedbackGenerator` for the haptic.
+
 **Parent mode (*Mode parent*)**, protected by a 3-second long-press on a lock icon plus an optional code or Face ID:
 - Create, rename, reorder, and delete **pages** (*pages*). Set the grid size per page (columns × rows).
 - Create or edit a **pictogram**:
@@ -144,7 +160,7 @@ Transitions and **visual schedules** (*emploi du temps visuel*) are also part of
 8. **Attributes**: ready-made pages for colours, sizes, quantities, and shapes.
 9. **Colour coding by word type** (modified Fitzgerald key, optional): people, verbs, nouns, adjectives, social words, and starters each get a different border colour.
 10. **Folder pictograms**: a pictogram that opens another page, for example "Manger" opening the food page.
-11. **iCloud sync** between the parent's iPhone and the child's iPad, plus automatic local backups.
+11. **iCloud sync** between the parent's iPhone and the child's iPad (moved into step 1), plus automatic local backups.
 12. **Communication log** (*journal*): which pictograms and sentences were used, and when. Stored on the device, exportable as CSV for the orthophoniste. It can be turned off.
 
 **Nice to have, later**
@@ -186,6 +202,7 @@ Transitions and **visual schedules** (*emploi du temps visuel*) are also part of
 | Screen | Mode | Notes |
 |---|---|---|
 | Board (grid, tabs, strip, bar) | Child | Opens on the last page used. Calm visuals, no animations beyond tap feedback. |
+| Show mode overlay | Child | Selected card enlarged in the centre, page dimmed behind. Closed by the adult (§3.1). |
 | Board in edit mode | Parent | Same layout with drag handles, "+" on empty slots, and a toolbar (add page, grid size, import, export). |
 | Pictogram editor (sheet) | Parent | Image source picker (Photos, Camera, Library, Files), crop, label, spoken text, ▶ preview, record voice, word type, pages it appears on. |
 | Symbol search (sheet) | Parent | Search field in French, results grid, colour and skin options, attribution shown. |
@@ -435,9 +452,9 @@ Sizes are rough (S is a few days, M 1–2 weeks, L 2–4 weeks of evening or wee
 | Step | Content | Size |
 |---|---|---|
 | **0. Preparation** | Get an Apple Developer account (99 €/year), which avoids re-installing every 7 days. Create the Xcode project, GitHub Actions CI, and README. Photograph his current binder cards and 5–10 favourite items. Ask his speech therapist which cards to start with. | S |
-| **1. MVP "tableau parlant"** | Models (§7.3). Child mode with **1–4 large cards per page** and instant French speech on tap. Permanent bar with **Non** and **Aide**. Parent mode with lock. Page CRUD and grid size. Pictogram editor with photo library, camera, crop, label, and spoken text. Move within and between pages (drag and menu). Hide and show. Basic settings (voice, rate, label style). Recorded voice per pictogram, moved up from step 5 because a parent's voice often works better at this level. | L |
+| **1. MVP "tableau parlant"** | Models (§7.3). Child mode with **1–4 large cards per page** and instant French speech on tap. Permanent bar with **Non** and **Aide**. Parent mode with lock. Page CRUD and grid size. Pictogram editor with photo library, camera, crop, label, and spoken text. Move within and between pages (drag and menu). Hide and show. Basic settings (voice, rate, label style). Recorded voice per pictogram, moved up from step 5 because a parent's voice often works better at this level. **Show mode** (card animates to the centre to be shown to an adult). **iCloud sync** between the iPad and the parent's iPhone. | L |
 | **2. Symbol library** | ARASAAC search and download, with attribution and credits. Bundled starter pack (objects, toys, critical cards). Photo background removal, only if his iPad supports it. | M |
-| **3. Sharing and backup** | Print cards to PDF, so the paper binder matches the app. `.pictos` export and import (pictogram, pages, full backup) through AirDrop, Files, and Mail. Automatic local backups. iCloud sync with a parent iPhone, if wanted. | M |
+| **3. Sharing and backup** | Print cards to PDF, so the paper binder matches the app. `.pictos` export and import (pictogram, pages, full backup) through AirDrop, Files, and Mail. Automatic local backups. | M |
 | **4. Sentence strip** | Only when he picks the right card reliably from several (end of Phase III). Strip, "Je veux" starter, reading with sequential highlight, reorder and clear. Phase presets. Attribute pages. Fitzgerald colour coding. | M |
 | **5. Extras** | Folder pictograms. Communication log with CSV export. Visual schedule and D'abord/Ensuite. Timer for Attends. OBF import/export. Several profiles. Personal Voice. | L |
 
@@ -471,11 +488,9 @@ from his orthophoniste or PECS consultant.
 
 ## 11. Open questions
 
-Questions 1–5 are answered in [§0](#0-context-and-decisions). Still open:
+Questions 1–6 (and the editing device) are answered in [§0](#0-context-and-decisions). Still open:
 
-1. **Voice.** A synthetic French voice, your own recorded voice, or both? The plan supports both from step 1.
-2. **Editing device.** Will you edit only on his iPad, or also from your iPhone? If also from the iPhone, iCloud sync moves earlier.
-3. **PECS phase.** Ask his speech therapist which phase they are working on, and adjust the default layout (§0) to match.
+1. **PECS phase.** Ask his speech therapist which phase they are working on, and adjust the default layout (§0) to match.
 
 ---
 
