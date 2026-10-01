@@ -13,8 +13,16 @@ struct PageSettingsView: View {
     @State private var isHidden: Bool
     @State private var message: String?
 
-    private static let presets: [(label: String, columns: Int, rows: Int)] = [
-        ("1", 1, 1), ("2", 2, 1), ("4", 2, 2), ("6", 3, 2), ("9", 3, 3), ("12", 4, 3), ("20", 5, 4),
+    private struct Preset: Identifiable {
+        let columns: Int
+        let rows: Int
+        var id: Int { columns * rows }
+    }
+
+    private static let presets = [
+        Preset(columns: 1, rows: 1), Preset(columns: 2, rows: 1), Preset(columns: 2, rows: 2),
+        Preset(columns: 3, rows: 2), Preset(columns: 3, rows: 3), Preset(columns: 4, rows: 3),
+        Preset(columns: 5, rows: 4),
     ]
 
     init(page: Page) {
@@ -40,8 +48,8 @@ struct PageSettingsView: View {
                     if !isBar {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(Self.presets, id: \.label) { preset in
-                                    Button(preset.label) {
+                                ForEach(Self.presets) { preset in
+                                    Button("\(preset.columns * preset.rows)") {
                                         columns = preset.columns
                                         rows = preset.rows
                                     }

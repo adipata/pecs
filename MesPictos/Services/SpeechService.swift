@@ -80,7 +80,7 @@ final class SpeechService {
     }
 
     /// French voices, best first: fr-FR before other French locales, then premium, enhanced, default.
-    static func frenchVoices() -> [AVSpeechSynthesisVoice] {
+    nonisolated static func frenchVoices() -> [AVSpeechSynthesisVoice] {
         AVSpeechSynthesisVoice.speechVoices()
             .filter { $0.language.hasPrefix("fr") && !$0.voiceTraits.contains(.isNoveltyVoice) }
             .sorted { a, b in
@@ -92,7 +92,7 @@ final class SpeechService {
             }
     }
 
-    static func qualityName(_ quality: AVSpeechSynthesisVoiceQuality) -> String {
+    nonisolated static func qualityName(_ quality: AVSpeechSynthesisVoiceQuality) -> String {
         switch quality {
         case .premium: return "premium"
         case .enhanced: return "améliorée"
