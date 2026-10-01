@@ -1,0 +1,11 @@
+# Xcode user state (machine-specific, binary)
+xcuserdata/
+*.xcuserstate
+
+# Build artifacts
+build/
+DerivedData/
+*.xcresult
+
+# macOS
+.DS_Store

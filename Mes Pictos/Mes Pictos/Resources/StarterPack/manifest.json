@@ -1,0 +1,368 @@
+{
+  "format": "mespictos-starter-pack",
+  "version": 1,
+  "licence": "CC BY-NC-SA – ARASAAC",
+  "attribution": "Les symboles pictographiques utilisés sont la propriété du Gouvernement d'Aragon et ont été créés par Sergio Palao pour ARASAAC (https://arasaac.org), qui les distribue sous licence Creative Commons BY-NC-SA.",
+  "items": [
+    {
+      "id": "12252",
+      "keyword": "aide",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "27339",
+      "keyword": "pause",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "5526",
+      "keyword": "non",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "5584",
+      "keyword": "oui",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "16697",
+      "keyword": "attends",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "5358",
+      "keyword": "fini",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "37163",
+      "keyword": "encore",
+      "category": "Cartes critiques"
+    },
+    {
+      "id": "5441",
+      "keyword": "je veux",
+      "category": "Débuts de phrase"
+    },
+    {
+      "id": "7801",
+      "keyword": "je vois",
+      "category": "Débuts de phrase"
+    },
+    {
+      "id": "7171",
+      "keyword": "j'entends",
+      "category": "Débuts de phrase"
+    },
+    {
+      "id": "37826",
+      "keyword": "j'ai",
+      "category": "Débuts de phrase"
+    },
+    {
+      "id": "37370",
+      "keyword": "c'est",
+      "category": "Débuts de phrase"
+    },
+    {
+      "id": "2462",
+      "keyword": "pomme",
+      "category": "Manger"
+    },
+    {
+      "id": "2530",
+      "keyword": "banane",
+      "category": "Manger"
+    },
+    {
+      "id": "2502",
+      "keyword": "gâteau",
+      "category": "Manger"
+    },
+    {
+      "id": "8312",
+      "keyword": "biscuit",
+      "category": "Manger"
+    },
+    {
+      "id": "2494",
+      "keyword": "pain",
+      "category": "Manger"
+    },
+    {
+      "id": "2445",
+      "keyword": "lait",
+      "category": "Manger"
+    },
+    {
+      "id": "32464",
+      "keyword": "eau",
+      "category": "Manger"
+    },
+    {
+      "id": "2624",
+      "keyword": "jus d'orange",
+      "category": "Manger"
+    },
+    {
+      "id": "2618",
+      "keyword": "yaourt",
+      "category": "Manger"
+    },
+    {
+      "id": "2541",
+      "keyword": "fromage",
+      "category": "Manger"
+    },
+    {
+      "id": "2573",
+      "keyword": "soupe",
+      "category": "Manger"
+    },
+    {
+      "id": "8652",
+      "keyword": "pâtes",
+      "category": "Manger"
+    },
+    {
+      "id": "6911",
+      "keyword": "riz",
+      "category": "Manger"
+    },
+    {
+      "id": "2527",
+      "keyword": "pizza",
+      "category": "Manger"
+    },
+    {
+      "id": "25940",
+      "keyword": "chocolat",
+      "category": "Manger"
+    },
+    {
+      "id": "2686",
+      "keyword": "bonbon",
+      "category": "Manger"
+    },
+    {
+      "id": "2420",
+      "keyword": "glace",
+      "category": "Manger"
+    },
+    {
+      "id": "2505",
+      "keyword": "frites",
+      "category": "Manger"
+    },
+    {
+      "id": "2408",
+      "keyword": "ballon",
+      "category": "Jouer"
+    },
+    {
+      "id": "6945",
+      "keyword": "bulles",
+      "category": "Jouer"
+    },
+    {
+      "id": "8088",
+      "keyword": "dessiner",
+      "category": "Jouer"
+    },
+    {
+      "id": "24791",
+      "keyword": "musique",
+      "category": "Jouer"
+    },
+    {
+      "id": "25191",
+      "keyword": "livre",
+      "category": "Jouer"
+    },
+    {
+      "id": "2540",
+      "keyword": "puzzle",
+      "category": "Jouer"
+    },
+    {
+      "id": "25498",
+      "keyword": "télévision",
+      "category": "Jouer"
+    },
+    {
+      "id": "9813",
+      "keyword": "jouet",
+      "category": "Jouer"
+    },
+    {
+      "id": "27407",
+      "keyword": "câlin",
+      "category": "Jouer"
+    },
+    {
+      "id": "6935",
+      "keyword": "vélo",
+      "category": "Jouer"
+    },
+    {
+      "id": "2339",
+      "keyword": "voiture",
+      "category": "Jouer"
+    },
+    {
+      "id": "5921",
+      "keyword": "toilettes",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "6479",
+      "keyword": "dormir",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "2593",
+      "keyword": "bain",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "32426",
+      "keyword": "douche",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "2694",
+      "keyword": "brosser les dents",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "5504",
+      "keyword": "mal",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "35537",
+      "keyword": "fatigué",
+      "category": "Corps et soins"
+    },
+    {
+      "id": "31146",
+      "keyword": "papa",
+      "category": "Personnes"
+    },
+    {
+      "id": "2458",
+      "keyword": "maman",
+      "category": "Personnes"
+    },
+    {
+      "id": "2423",
+      "keyword": "frère",
+      "category": "Personnes"
+    },
+    {
+      "id": "2422",
+      "keyword": "sœur",
+      "category": "Personnes"
+    },
+    {
+      "id": "23710",
+      "keyword": "grand-mère",
+      "category": "Personnes"
+    },
+    {
+      "id": "23718",
+      "keyword": "grand-père",
+      "category": "Personnes"
+    },
+    {
+      "id": "25790",
+      "keyword": "ami",
+      "category": "Personnes"
+    },
+    {
+      "id": "2456",
+      "keyword": "maîtresse",
+      "category": "Personnes"
+    },
+    {
+      "id": "35547",
+      "keyword": "content",
+      "category": "Émotions"
+    },
+    {
+      "id": "35545",
+      "keyword": "triste",
+      "category": "Émotions"
+    },
+    {
+      "id": "35539",
+      "keyword": "fâché",
+      "category": "Émotions"
+    },
+    {
+      "id": "10261",
+      "keyword": "peur",
+      "category": "Émotions"
+    },
+    {
+      "id": "3308",
+      "keyword": "malade",
+      "category": "Émotions"
+    },
+    {
+      "id": "32446",
+      "keyword": "école",
+      "category": "École"
+    },
+    {
+      "id": "2282",
+      "keyword": "stylo",
+      "category": "École"
+    },
+    {
+      "id": "2591",
+      "keyword": "ciseaux",
+      "category": "École"
+    },
+    {
+      "id": "2709",
+      "keyword": "colle",
+      "category": "École"
+    },
+    {
+      "id": "7202",
+      "keyword": "chien",
+      "category": "Animaux"
+    },
+    {
+      "id": "7114",
+      "keyword": "chat",
+      "category": "Animaux"
+    },
+    {
+      "id": "5475",
+      "keyword": "dehors",
+      "category": "Lieux et sorties"
+    },
+    {
+      "id": "35111",
+      "keyword": "promenade",
+      "category": "Lieux et sorties"
+    },
+    {
+      "id": "6964",
+      "keyword": "maison",
+      "category": "Lieux et sorties"
+    },
+    {
+      "id": "2859",
+      "keyword": "parc",
+      "category": "Lieux et sorties"
+    },
+    {
+      "id": "35695",
+      "keyword": "magasin",
+      "category": "Lieux et sorties"
+    }
+  ]
+}

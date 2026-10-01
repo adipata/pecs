@@ -1,0 +1,125 @@
+2026-09-30 17:46:12 +0000  Sending request 06046208-2ED6-4E3F-9A80-AA4AA2D3B700 to <https://developerservices2.apple.com/services/v1/bundleIds> for session <DVTServicesAccountBasedSession: 0x9936dee20; account='<DVTAppleIDBasedDeveloperAccount: 0x983886640; username='adi@pata.ro'>'>.
+Method: POST
+
+Headers:
+{
+    Accept = "application/vnd.api+json";
+    "Accept-Encoding" = "gzip, deflate";
+    "Content-Length" = 128;
+    "Content-Type" = "application/vnd.api+json";
+    "User-Agent" = Xcode;
+    "X-Apple-App-Info" = "com.apple.gs.xcode.auth";
+    "X-Apple-GS-Token" = "AAAABLwIAAAAAGpu+MoRDWdzLnhjb2RlLmF1dGi9AOlkzgFiRbUJvsRmqUEckZ72FS9UF9mmdbbJ/Xyh364WiLMzLHbJ9eKe7+Krvkv3cOy0jXVMpQ5b512/q9HCpYuOoCRima+2o/jNZ2+qGYti8XwEWOqApT1ykzqP7+bNGdZhHtDOztlRYoBZgIva2paN/SMD";
+    "X-Apple-I-Identity-Id" = "001747-08-59a0fa51-37b2-4a33-aa2a-e52488ff257f";
+    "X-HTTP-Method-Override" = GET;
+    "X-MMe-Client-Info" = "<Mac17,9> <macOS;26.6.2;25G83> <com.apple.AuthKit/1 (com.apple.dt.Xcode/25183.107.5)>";
+    "X-Mme-Device-Id" = "7D31CB16-97F5-5264-AF72-646D5D56CC82";
+    "X-Xcode-Version" = "27.0 (27A266a)";
+}
+
+Payload:
+{"urlEncodedQueryParams":"teamId=X3AS75R249&filter%5BbundleType%5D=bundle&filter%5Bidentifier%5D=lu.pata.mespictos,*&limit=200"}
+2026-09-30 17:46:12 +0000  Received response for 06046208-2ED6-4E3F-9A80-AA4AA2D3B700 @ <https://developerservices2.apple.com/services/v1/bundleIds>. Code = 0
+2026-09-30 17:46:12 +0000  Response payload: {
+  "data" : [ {
+    "type" : "bundleIds",
+    "id" : "868838ABV2",
+    "attributes" : {
+      "identifier" : "lu.pata.mespictos",
+      "seedId" : "X3AS75R249",
+      "hasExclusiveManagedCapabilities" : false,
+      "name" : "XC lu pata mespictos",
+      "entitlementGroupName" : null,
+      "bundleType" : "bundle",
+      "entitlementType" : null,
+      "platform" : "UNIVERSAL",
+      "deploymentDataNotice" : null,
+      "responseId" : "cc21441f-f71e-4736-95e7-6e13b9769b49",
+      "wildcard" : false
+    },
+    "relationships" : {
+      "bundleIdCapabilities" : {
+        "meta" : {
+          "paging" : {
+            "total" : 0,
+            "limit" : 2147483647
+          }
+        },
+        "links" : {
+          "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/868838ABV2/relationships/bundleIdCapabilities",
+          "related" : "https://developerservices2.apple.com:443/services/v1/bundleIds/868838ABV2/bundleIdCapabilities"
+        }
+      },
+      "profiles" : {
+        "meta" : {
+          "paging" : {
+            "total" : 0,
+            "limit" : 2147483647
+          }
+        },
+        "links" : {
+          "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/868838ABV2/relationships/profiles",
+          "related" : "https://developerservices2.apple.com:443/services/v1/bundleIds/868838ABV2/profiles"
+        }
+      }
+    },
+    "links" : {
+      "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/868838ABV2"
+    }
+  }, {
+    "type" : "bundleIds",
+    "id" : "PP6KUK2U28",
+    "attributes" : {
+      "identifier" : "*",
+      "seedId" : "X3AS75R249",
+      "hasExclusiveManagedCapabilities" : false,
+      "name" : "XC Wildcard",
+      "entitlementGroupName" : null,
+      "bundleType" : "bundle",
+      "entitlementType" : null,
+      "platform" : "UNIVERSAL",
+      "deploymentDataNotice" : null,
+      "responseId" : "cc21441f-f71e-4736-95e7-6e13b9769b49",
+      "wildcard" : true
+    },
+    "relationships" : {
+      "bundleIdCapabilities" : {
+        "meta" : {
+          "paging" : {
+            "total" : 0,
+            "limit" : 2147483647
+          }
+        },
+        "links" : {
+          "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/PP6KUK2U28/relationships/bundleIdCapabilities",
+          "related" : "https://developerservices2.apple.com:443/services/v1/bundleIds/PP6KUK2U28/bundleIdCapabilities"
+        }
+      },
+      "profiles" : {
+        "meta" : {
+          "paging" : {
+            "total" : 0,
+            "limit" : 2147483647
+          }
+        },
+        "links" : {
+          "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/PP6KUK2U28/relationships/profiles",
+          "related" : "https://developerservices2.apple.com:443/services/v1/bundleIds/PP6KUK2U28/profiles"
+        }
+      }
+    },
+    "links" : {
+      "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds/PP6KUK2U28"
+    }
+  } ],
+  "links" : {
+    "self" : "https://developerservices2.apple.com:443/services/v1/bundleIds?filter%5BbundleType%5D=bundle&filter%5Bidentifier%5D=lu.pata.mespictos%2C%2A&limit=200"
+  },
+  "meta" : {
+    "paging" : {
+      "total" : 2,
+      "limit" : 200
+    }
+  }
+}
+
