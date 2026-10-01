@@ -1,6 +1,6 @@
 # Plan: a PECS-inspired communication app for iPad and iPhone
 
-> Status: **draft / proposal**. Nothing is built yet. This document covers what
+> Status: **step 1 implemented** (see the README for how to build it). Steps 2–5 are not started. This document covers what
 > the app should do, why (grounded in PECS), how to build it, and in what order.
 > The answers to the open questions are recorded in [§0](#0-context-and-decisions).
 
