@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Test PictoCore package
+        run: swift test --package-path Packages/PictoCore
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Pick a simulator
+        id: simulator
+        run: |
+          UDID=$(xcrun simctl list devices available --json | python3 -c '
+          import json, re, sys
+          data = json.load(sys.stdin)["devices"]
+          best = None
+          for runtime, devices in data.items():
+              m = re.search(r"iOS-(\d+)-(\d+)", runtime)
+              if not m:
+                  continue
+              version = (int(m.group(1)), int(m.group(2)))
+              for d in devices:
+                  if d["name"].startswith("iPad") or d["name"].startswith("iPhone"):
+                      key = (version, d["name"].startswith("iPad"))
+                      if best is None or key > best[0]:
+                          best = (key, d["udid"], d["name"], runtime)
+          print(best[1])
+          print(best[2], best[3], file=sys.stderr)
+          ')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Build and test app
+        run: |
+          status=0
+          xcodebuild test \
+            -project MesPictos.xcodeproj \
+            -scheme MesPictos \
+            -destination "id=${{ steps.simulator.outputs.udid }}" \
+            CODE_SIGNING_ALLOWED=NO > xcodebuild.log 2>&1 || status=$?
+          echo "--- Errors and warnings in app sources ---"
+          grep -E "error:|/MesPictos/.*warning:" xcodebuild.log | sort -u || true
+          echo "--- Tests ---"
+          grep -E "Test Case .*(passed|failed)|Executed|\*\* (BUILD|TEST)" xcodebuild.log || true
+          echo "--- Last lines ---"
+          tail -n 40 xcodebuild.log
+          exit $status
+
+      - name: Upload build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcodebuild-log
+          path: xcodebuild.log

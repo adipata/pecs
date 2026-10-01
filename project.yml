@@ -1,0 +1,89 @@
+name: MesPictos
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  developmentLanguage: fr
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+packages:
+  PictoCore:
+    path: Packages/PictoCore
+
+targets:
+  MesPictos:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
+    sources:
+      - path: MesPictos
+    dependencies:
+      - package: PictoCore
+    info:
+      path: MesPictos/Info.plist
+      properties:
+        CFBundleDisplayName: Mes Pictos
+        CFBundleDevelopmentRegion: fr
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIBackgroundModes:
+          - remote-notification
+        NSCameraUsageDescription: Mes Pictos utilise l'appareil photo pour créer des pictogrammes à partir de vos photos.
+        NSMicrophoneUsageDescription: Mes Pictos utilise le micro pour enregistrer votre voix sur les pictogrammes.
+        NSFaceIDUsageDescription: Mes Pictos utilise Face ID pour protéger le mode parent.
+    entitlements:
+      path: MesPictos/MesPictos.entitlements
+      properties:
+        com.apple.developer.icloud-container-identifiers:
+          - iCloud.$(APP_BUNDLE_ID)
+        com.apple.developer.icloud-services:
+          - CloudKit
+        aps-environment: development
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+  MesPictosTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MesPictosTests
+    dependencies:
+      - target: MesPictos
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.mespictos.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  MesPictos:
+    build:
+      targets:
+        MesPictos: all
+        MesPictosTests: [test]
+    test:
+      gatherCoverageData: false
+      targets:
+        - MesPictosTests

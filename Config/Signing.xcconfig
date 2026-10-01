@@ -1,0 +1,15 @@
+// Signing settings for Mes Pictos.
+//
+// Put your own values in Config/Signing.local.xcconfig (not committed), for example:
+//
+//   DEVELOPMENT_TEAM = ABCDE12345
+//   APP_BUNDLE_ID = lu.example.mespictos
+//
+// The Team ID is shown in Xcode > Settings > Accounts, or on developer.apple.com.
+// The iCloud container is derived from the bundle identifier: iCloud.$(APP_BUNDLE_ID).
+
+DEVELOPMENT_TEAM =
+APP_BUNDLE_ID = com.example.mespictos
+CODE_SIGN_STYLE = Automatic
+
+#include? "Signing.local.xcconfig"
